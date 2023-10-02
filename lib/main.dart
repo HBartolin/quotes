@@ -39,7 +39,14 @@ class QuoteListState extends State<QuoteList> {
       ),
       body: Column(
         children: quotes.map(
-                (quote) => QuoteCard(quote: quote)
+                (quote) => QuoteCard(
+                    quote: quote,
+                    delete: () {
+                      setState(() {
+                        quotes.remove(quote);
+                      });
+                    }
+                )
         ).toList(),
       ),
     );
